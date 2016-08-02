@@ -1,0 +1,34 @@
+#!/bin/bash
+
+[ ! -n $BUILD_DIR ] && (echo "missing build dir env, exiting ..."; exit 1)
+
+yATFF=$(cat <<"EOF"
+`.t set `T`E`N`G`q`r!(('[.[`.t.R;();,;];])@/:{.[x;(),y;0b]}@/:(1b~;~;('[~:;~]);>)),{ -1 sv["|";.z.x 1 2 3 9],/: .Q.s2 count each group x; exit any not x},{ r,:@[{system x; .t.R};"l ", .z.x 4;{ -2 x; 0b}]; .t.q[r]}; .t.r[]
+EOF
+)
+
+for p in $(ls $BUILD_DIR); do P=$BUILD_DIR/$p/test/${TT:-a}.t;
+  [ -f $P ] && for c in `<$P`; do C=$BUILD_DIR/$p/test/$c/${TT:-a}.t;
+   brc=$BUILD_DIR/$p/test/$c/bashrc; [ -f $brc ] && source $brc >/dev/null 2>&1;
+   prep=$BUILD_DIR/$p/test/$c/prep.sh; [ -f $prep ] && eval $prep >/dev/null 2>&1;
+   [ -f $C ] && for tf in `<$C`; do T=$BUILD_DIR/$p/test/$c/$tf;
+     [ -f $T ] && q -br $p $c $tf $T -t 100 -q </dev/null 2>/dev/null <<< $yATFF;
+     done
+   tear=$BUILD_DIR/$p/test/$c/tear.sh; [ -f $tear ] && eval $tear >/dev/null 2>&1;
+ done
+done | tee $BUILD_DIR/c.csv
+
+c2ju=$(cat <<"EOF"
+r:select failures:sum not pass, tests:1, sum assertions by testsuite,name:testcase from update testsuite:sv'[`;pkg,'testsuite] from flip `pkg`testsuite`testcase`pass`assertions!("SSSBJ";"|") 0: hsym `$ .z.x 1;
+-1 "<?xml version=\"1.0\" encoding=\"utf-8\"?>", .h.htac[`testsuites;string sum get r] "\n" sv ((),/:string 0!select sum failures, sum tests, sum assertions by name:testsuite from r ).h.htac[`testsuite]'("\n" sv' get (.h.htac[`testcase;;""] each (),/:string delete testsuite from r) group[key[r]`testsuite]);
+exit sum[get r]`failures
+EOF
+)
+
+exec q -cf $BUILD_DIR/c.csv -q </dev/null > $BUILD_DIR/t.xml <<<$c2ju
+exit $?
+
+
+
+
+
