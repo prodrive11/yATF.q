@@ -19,9 +19,8 @@ Very simple but functional and CI ready
 # Features
 
 * single script **bladeR** to run within Jenkins
-
 * Converts report to Junit.xml format - jenkins can read those
-
+* Runs various severity of tests: unit, integration, system - based on your selection in TT files (a.t, u.t, i.t or s.t) 
 * Looks for *(bashrc|prepare.sh|teardown.sh)* files in *$BUILD_DIR/test* to prepare environment
    
     ie. to start/stop whole system, kill afterwards and delete all data
@@ -29,23 +28,41 @@ Very simple but functional and CI ready
 <a name="structure"/>
 # Structure
 
-- bladeR
+```
+($BUILD_DIR|$WORKSPACE_ROOT)/
+---->/bladeR
+---->/app1/
+--------->/bin
+--------->/src                                  ## contains all source files
+--------->/test/                                ## default test folder
+-------------->/a.t                             ## module Test Type - list of modules to test 
+-------------->/basicsuite/
+------------------------->/a.t                  ## test suite Test Type - list of files to run
+------------------------->/genericT.q
+------------------------->/mod1T.q
+```
 
 <a name="manual"/>
 # Manual
 
 ## Test environemnt variables
 | Assertion    | Description  | Example |
-| ------------- |:-------------:| -----:|
+| ------------- |:-------------| -----:|
 | $BUILD_DIR      |  Optional for Jenkins - as in example | |
+| $TT      |  **T**est **T**ype, default 'a' for all test | |
 | $QHOME      | Needed to run q/kdb+      |    |
 | $PATH      | Add $QHOME/<os> to start q from any location   |    |
 
+Tests using a list of test to run from particular test type : 
+|a.t|all suits from a module|
+|u.t|unit suits from a module|
+|i.t|integration suits from a module|
+|s.t|system tests from a module|
 
 ## Assertions
 
 | Assertion        | Example           | Description  |
-| ------------- |:-------------:| -----:|
+| ------------- |:-------------| -----:|
 | **.t.T**      | .t.T "B">"A" | **True** => 1b |
 | **.t.E**      | .t.E ("not same"; 84)      |   **E**qual => 0b  |
 | **.t.N**      | .t.N (`notEqual; 101)      |  **N**ot equal => 1b   |
@@ -63,3 +80,16 @@ Very simple but functional and CI ready
 
 <a name="example"/>
 # **'example'** project
+
+Example project contains two individual apps/modules:
+* app1
+
+   collection of few simple util functions
+   Tests runs basic unit tests
+
+* chat
+
+   Have full chat,  
+   tests simulates whole ecosystem system ie. few clients and server started from prepare.sh
+   it's all wiped when tests are finished within teardown.sh
+   
