@@ -20,6 +20,7 @@ Very simple but functional and CI ready
 * Converts report to Junit.xml format - jenkins default 
 * Runs various severity of tests: unit, integration, system - based on your selection in TT files (a.t, u.t, i.t or s.t)
 * Looks for *(bashrc|prepare.sh|teardown.sh)* files in *$BUILD_DIR/test* to prepare environment
+
     ie. to start/stop whole system, kill afterwards and delete all data
 
 <a name="structure"/>
@@ -37,6 +38,13 @@ Very simple but functional and CI ready
 ------------------------->/a.t                  ## test suite Test Type - list of files to run
 ------------------------->/genericT.q
 ------------------------->/mod1T.q
+-------------->/systemsuite/
+------------------------->/a.t                  
+------------------------->/bashrc               ## environment file, loaded before running tests within suite
+------------------------->/prepare.sh           ## prepare env for integ/system tests - start whole system
+------------------------->/teardown.sh          ## purges environment after all test from suite were run
+------------------------->/first.q
+------------------------->/second.q
 ```
 
 <a name="manual"/>
