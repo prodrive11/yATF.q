@@ -10,7 +10,6 @@
 # About **yATF.q**
 yet Another Test Framework for q/kdb+  
 Very simple but functional and CI ready
-
 ![alt text](https://raw.githubusercontent.com/prodrive11/yATF.q/master/res/jenkins%201.png "yATF.q in Jenkins")
 
 
@@ -52,12 +51,13 @@ Very simple but functional and CI ready
 | $PATH      | Add $QHOME/<os> to start q from any location   |    |
 
 Tests using a list of test to run from particular test type : 
+
 | Test Type file  | Description    |
 | ------------- |:-------------|
-|a.t|all suits from a module|
-|u.t|unit suits from a module|
-|i.t|integration suits from a module|
-|s.t|system tests from a module|
+| a.t | all suits from a module |
+| u.t | unit suits from a module |
+| i.t | integration suits from a module |
+| s.t | system tests from a module |
 
 ## Assertions
 
