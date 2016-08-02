@@ -103,24 +103,8 @@ Example project contains two individual apps/modules:
    tests simulates whole ecosystem system ie. few clients and server started from prepare.sh
    it's all wiped when tests are finished within teardown.sh
    
-   
-## Jenkins config
 
-[Example config for this project](https://raw.githubusercontent.com/prodrive11/yATF.q/master/example/jenkins-config.xml)
-
-Works with local git server, and *hudson.plugins.git.GitSCM* plugin for Jenkins.
-
-Basic Git confing in Jenkins job
-![alt text](https://raw.githubusercontent.com/prodrive11/yATF.q/master/res/Jenkins%20job%20-git%20cfg.png "Git confing in Jenkins job")
-
-Git polling schedule in Jenkins job (each 15mins)
-![alt text](https://raw.githubusercontent.com/prodrive11/yATF.q/master/res/Jenkins%20job%20-git%20poll.png "Git poll schedule")
-
-Actual build and report location config example
-![alt text](https://raw.githubusercontent.com/prodrive11/yATF.q/master/res/Jenkins%20job%20-build%20test%20report%20.png "Actual build and report location config")
-
-
-### Setting up basic environment on Ubuntu server
+## Setting up basic environment on Ubuntu server
 ```bash
 #GIT USER:
     5  mkdir .ssh
@@ -186,5 +170,20 @@ Actual build and report location config example
 ```
 
 
+  
+## Jenkins config
+
+[Example config for this project](https://raw.githubusercontent.com/prodrive11/yATF.q/master/example/jenkins-config.xml)
+
+Works with local git server, and *hudson.plugins.git.GitSCM* plugin for Jenkins.
+
+Basic Git confing in Jenkins job
+![alt text](https://raw.githubusercontent.com/prodrive11/yATF.q/master/res/Jenkins%20job%20-git%20cfg.png "Git confing in Jenkins job")
+
+Git polling schedule in Jenkins job (each 15mins)
+![alt text](https://raw.githubusercontent.com/prodrive11/yATF.q/master/res/Jenkins%20job%20-git%20poll.png "Git poll schedule")
+
+Actual build and report location config example
+![alt text](https://raw.githubusercontent.com/prodrive11/yATF.q/master/res/Jenkins%20job%20-build%20test%20report%20.png "Actual build and report location config")
 
 
