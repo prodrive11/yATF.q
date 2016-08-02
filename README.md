@@ -6,22 +6,31 @@ Very simple but functional and CI ready
 ![alt text](https://raw.githubusercontent.com/prodrive11/yATF.q/master/res/jenkins%201.png "yATF.q in Jenkins")
 
 
+##### Table of Contents  
+[Features](#features)  
+[Structure](#structure)  
+[Manual](#manual)  
+[Exmple](#example)  
+
+<a name="features"/>
 # Features
 
+* single script **bladeR** to run within Jenkins
+
+* Converts report to Junit.xml format - jenkins can read those
+
+* Looks for *(bashrc|prepare.sh|teardown.sh)* files in *$BUILD_DIR/test* to prepare environment
+   
+    ie. to start/stop whole system, kill afterwards and delete all data
+
+<a name="structure"/>
 # Structure
 
 - bladeR
 
-Shell script to run within Jenkins
+<a name="manual"/>
+# Manual
 
-Defines yATF.q itself
 
-Converts report to Junit.xml format - jenkins can read those
-
-Looks for bashrc files in '$PROJ/test' to prepare environment
-
-If exist runs prepare.sh - to ie. start system
-
-If exist runs teardown.sh - to kill the system, delete data etc.
-
-- 'example' project
+<a name="example"/>
+# **'example'** project
