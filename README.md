@@ -120,6 +120,70 @@ Actual build and report location config example
 ![alt text](https://raw.githubusercontent.com/prodrive11/yATF.q/master/res/Jenkins%20job%20-build%20test%20report%20.png "Actual build and report location config")
 
 
+### Setting up basic environment on Ubuntu server
+```bash
+#GIT USER:
+    5  mkdir .ssh
+    7  chmod 700 .ssh
+    9  touch .ssh/authorized_keys && chmod 600 .ssh/authorized_keys
+   13  ssh-keygen -t rsa -C "jenkins@silenthill.com"
+   16  cat id_rsa.jenkins.pub >> .ssh/authorized_keys
+   20  chmod a+rw id_rsa.jenkins*
+   21  cat >> .ssh/authorized_keys #//prodrive11 pub key
+   22  cd /opt
+   24  mkdir git
+   25  cd git
+   28  mkdir app1.git chat.git
+   29  cd app1.git
+   30  git init --bare
+   31  cd ../chat.git/
+   32  git init --bare
+```
+
+```bash
+#as Jenkins user:
+    5  cd /var/lib/jenkins/
+    8  mkdir .ssh
+   10  cd .ssh
+   15  cp /home/git/id_rsa.jenkins id_rsa
+   16  cp /home/git/id_rsa.jenkins.pub id_rsa.pub
+```
+
+```bash
+#as prodrive11 user:
+ #get jenkins
+ 555 wget -q -O - https://jenkins-ci.org/debian/jenkins-ci.org.key | sudo apt-key add -
+ 556 sudo sh -c 'echo deb http://pkg.jenkins-ci.org/debian binary/ > /etc/apt/sources.list.d/jenkins.list'
+ 557 sudo apt-get update
+ 558 sudo apt-get install jenkins
+``` 
+ 
+```bash
+ #setup git
+ 1069  cd .ssh
+ 1070  mkdir .ssh
+ 1071  ssh-keygen -t rsa -C "prodrive11@silenthill.com"
+ 1113  sudo adduser git
+ 1114  sudo su git
+ 1118  sudo su jenkins -s /bin/bash
+ 1075  cd /opt
+ 1077  mkdir git
+ 1078  sudo mkdir git
+ 1080  sudo chown git:git git/
+```
+```bash
+ #init repo
+ 1090  mkdir workspace
+ 1091  cd workspace/
+ 1092  mkdir app1
+ 1093  cd app1/
+ 1094  git init
+ 1098  git config --global user.email "prodrive11@silenthill.com"
+ 1099  git config --global user.name "Patryk"
+ 1101  git remote add origin git@silenthill:/opt/git/app1.git
+ 1102  add some files
+ 1103  git push origin master
+```
 
 
 
