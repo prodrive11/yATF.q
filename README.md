@@ -21,7 +21,7 @@ Designed for and presented during ![alt text](https://docs.google.com/presentati
 * single script **bladeR** to run within Jenkins
 * Converts report to Junit.xml format - jenkins default 
 * Runs various severity of tests: unit, integration, system - based on your selection in TT files (a.t, u.t, i.t or s.t)
-* Looks for *(bashrc|prepare.sh|teardown.sh)* files in *$BUILD_DIR/test* to prepare environment
+* Looks for *(bashrc|prep.sh|tear.sh)* files in *$BUILD_DIR/test* to prepare environment
 
     ie. to start/stop whole system, kill afterwards and delete all data
 
@@ -43,8 +43,8 @@ Designed for and presented during ![alt text](https://docs.google.com/presentati
 -------------->/systemsuite/
 ------------------------->/a.t                  
 ------------------------->/bashrc               ## environment file, loaded before running tests within suite
-------------------------->/prepare.sh           ## prepare env for integ/system tests - start whole system
-------------------------->/teardown.sh          ## purges environment after all test from suite were run
+------------------------->/prep.sh              ## prepare env for integ/system tests - start whole system
+------------------------->/tear.sh              ## purges environment after all test from suite were run
 ------------------------->/first.q
 ------------------------->/second.q
 ```
