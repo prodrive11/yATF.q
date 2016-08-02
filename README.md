@@ -4,12 +4,11 @@
 [Features](#features)  
 [Structure](#structure)  
 [Manual](#manual)  
-[Exmple](#example)  
+[Example](#example)  
 
 <a name="about"/>
 # About **yATF.q**
 yet Another Test Framework for q/kdb+  
-
 Very simple but functional and CI ready
 
 ![alt text](https://raw.githubusercontent.com/prodrive11/yATF.q/master/res/jenkins%201.png "yATF.q in Jenkins")
@@ -19,10 +18,9 @@ Very simple but functional and CI ready
 # Features
 
 * single script **bladeR** to run within Jenkins
-* Converts report to Junit.xml format - jenkins can read those
-* Runs various severity of tests: unit, integration, system - based on your selection in TT files (a.t, u.t, i.t or s.t) 
+* Converts report to Junit.xml format - jenkins default 
+* Runs various severity of tests: unit, integration, system - based on your selection in TT files (a.t, u.t, i.t or s.t)
 * Looks for *(bashrc|prepare.sh|teardown.sh)* files in *$BUILD_DIR/test* to prepare environment
-   
     ie. to start/stop whole system, kill afterwards and delete all data
 
 <a name="structure"/>
@@ -54,6 +52,8 @@ Very simple but functional and CI ready
 | $PATH      | Add $QHOME/<os> to start q from any location   |    |
 
 Tests using a list of test to run from particular test type : 
+| Test Type file  | Description    |
+| ------------- |:-------------|
 |a.t|all suits from a module|
 |u.t|unit suits from a module|
 |i.t|integration suits from a module|
