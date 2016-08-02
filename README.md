@@ -12,6 +12,8 @@ yet Another Test Framework for q/kdb+
 Very simple but functional and CI ready
 ![alt text](https://raw.githubusercontent.com/prodrive11/yATF.q/master/res/jenkins%201.png "yATF.q in Jenkins")
 
+Designed for and presented during ![alt text](https://docs.google.com/presentation/d/1SFtNVjchf_HPOWd-aAR1uEP8e20bFLE7nATYFpRCmTM/edit?usp=sharing "London KX Meetup 2015")
+
 
 <a name="features"/>
 # Features
